@@ -1,0 +1,73 @@
+.mainPage {
+    background-image: url("../images/running.jpg") no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-ms-background-position-x: center;
+}
+
+#datetimePickerContainer {
+	float: right;
+	width: 150px;
+}
+
+#appDiv {
+}
+
+#loginForm, #registerForm {
+	width: 400px;
+	height: 190px;
+	border: solid 1px gray;
+    padding: 20px;
+    position: absolute;
+    right: 10%;
+    top: 30%;
+    border-radius: 20px;
+    -webkit-box-shadow: 6px -12px 40px 4px rgba(0,0,0,0.75);
+	-moz-box-shadow: 6px -12px 40px 4px rgba(0,0,0,0.75);
+	box-shadow: 6px -12px 40px 4px rgba(0,0,0,0.75);
+	background-image: url("../images/gray.png");
+	background-size: cover;
+	-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(255,255,255,0.5)));
+}
+
+#registerForm {
+	height: 290px;
+}
+
+#loginBtn, #registerBtn {
+	float: right;
+}
+
+#loginBtnOutside, #registerBtnOutside {
+	position: absolute;
+	right: 11%;
+    top: 23%;
+}
+
+#mainDiv {
+	display: inline-block;
+	width: 820px;
+	height: 100vh;
+	margin: 0 auto;
+	border: solid 1px gray;
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+
+#sidebar {
+	display: inline-block;
+	width: 170px;
+	vertical-align: top;
+}
+
+#content {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#addTraining {
+	background-color: #379E39;
+	border-color: #379E39;
+}

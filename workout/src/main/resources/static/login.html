@@ -1,0 +1,16 @@
+<div class="mainPage">
+	<button class="btn btn-primary" id="registerBtnOutside" ng-click="go('register')">Create new accout</button>
+	<div id="loginForm">
+		<form role="form" ng-submit="login()">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Email"
+					id="username" name="username" ng-model="credentials.email" />
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" placeholder="Password"
+					id="password" name="password" ng-model="credentials.password" />
+			</div>
+			<button type="submit" class="btn btn-primary" id="loginBtn">Login</button>
+		</form>
+	</div>
+</div>
