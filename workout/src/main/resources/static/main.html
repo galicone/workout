@@ -30,13 +30,16 @@
 			<button type="submit" class="btn btn-primary" id="addTraining" ng-click="addTraining()">Add new training</button>
 		</div>
 
-		<table ng-show="authenticated" ng-repeat="training in trainings" class="responstable">
+		<table ng-show="authenticated" ng-repeat="training in trainings" class="ui celled selectable right aligned table">
+		<thead>
 			<tr>
 				<th>Exercise</th>
 				<th>Repeats</th>
 				<th>Duration (minutes)</th>
 				<th><button type="button" class="btn btn-danger btn-sm" ng-click="removeTraining(training.id)">Remove training</button></th>
 			</tr>
+		</thead>
+		<tbody>
 			<tr ng-repeat="exercise in training.exercises">
 				<td>{{exercise.repeats}}</td>
 				<td>{{exercise.exerciseType.name}}</td>
@@ -52,6 +55,7 @@
 				<td><button type="submit" class="btn btn-primary btn-sm" id="addExercise" data-toggle="modal"
 						data-target="#myModalNorm">Add new exercise</button></td>
 			</tr>
+			</tbody>
 		</table>
 	</div>
 

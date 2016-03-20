@@ -18,26 +18,14 @@
 #loginForm, #registerForm {
 	width: 400px;
 	height: 190px;
-	border: solid 1px gray;
     padding: 20px;
     position: absolute;
     right: 10%;
     top: 30%;
-    border-radius: 20px;
-    -webkit-box-shadow: 6px -12px 40px 4px rgba(0,0,0,0.75);
-	-moz-box-shadow: 6px -12px 40px 4px rgba(0,0,0,0.75);
-	box-shadow: 6px -12px 40px 4px rgba(0,0,0,0.75);
-	background-image: url("../images/gray.png");
-	background-size: cover;
-	-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(255,255,255,0.5)));
 }
 
 #registerForm {
 	height: 290px;
-}
-
-#loginBtn, #registerBtn {
-	float: right;
 }
 
 #loginBtnOutside, #registerBtnOutside {
@@ -71,3 +59,13 @@
 	background-color: #379E39;
 	border-color: #379E39;
 }
+
+body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
