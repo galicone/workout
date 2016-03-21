@@ -60,12 +60,12 @@
 	border-color: #379E39;
 }
 
-body > .grid {
-      height: 100%;
-    }
-    .image {
-      margin-top: -100px;
-    }
-    .column {
-      max-width: 450px;
-    }
+#trainingTable {
+	margin: 1em 0;
+	width: 100%;
+	overflow: hidden;
+	font-size: 12px;
+	width: 580px;
+	float: left;
+	margin-top: 25px;
+}
