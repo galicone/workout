@@ -57,13 +57,42 @@
 				<tr>
 					<th></th>
 					<th colspan="4">
-						<div class="ui right floated small primary labeled icon button" id="addExercise">
+						<div ng-click="addExercise()" class="ui right floated small primary labeled icon button addExercise">
 							<i class="plus icon"></i>Exercise
 						</div>
 					</th>
 				</tr>
 			</tfoot>
 		</table>
+	</div>
+</div>
+
+<div id="addExerciseModal" class="ui small modal">
+	<div class="header">Add new exercise</div>
+	<div class="content">
+		<div class="ui labeled input">
+			<a class="ui label"> Repeats </a> <input type="text" name="repeats" id="repeats" ng-model="exercise.repeats">
+		</div>
+		</br>
+		</br>
+		<div class="ui labeled input right floated">
+			<a class="ui label"> Duration </a> <input type="text" name="duration" id="duration" ng-model="exercise.duration">
+		</div>
+		</br>
+		</br>
+		<div class="ui selection dropdown">
+			<input type="hidden" name="gender"> <i class="dropdown icon"></i>
+			<div class="default text">Exercise type</div>
+			<div class="menu">
+				<div class="item" data-value="1">Male</div>
+				<div class="item" data-value="0">Female</div>
+			</div>
+		</div>
+		<p></p>
+	</div>
+	<div class="actions">
+		<div class="ui red deny button">Cancel</div>
+		<div class="ui positive button">Add</div>
 	</div>
 </div>
 

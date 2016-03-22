@@ -102,7 +102,6 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
     $rootScope.$on('$routeChangeStart', function (event) {
         if (!$rootScope.authenticated) {
           console.log('DENY : Redirecting to Login');
-        // event.preventDefault();
           $location.path('/');
         }
         else {
@@ -116,8 +115,6 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
 		$http.get('/training').success(function(data) {
 	        $scope.trainings = data;
 	    }).error(function(error, status) {
-	        console.log(error);
-	        console.log(status);
 	    });
 	}
 	
@@ -156,5 +153,19 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
 		}).error(function(data) {
 			$location.path("/login");
 		});
+    };
+    
+    // Load modal
+    $scope.$on('$viewContentLoaded', function(){
+		$('#addExerciseModal').modal({
+			blurring : true
+		});
+      });
+    
+    $scope.addExercise = function() {
+    	$('#addExerciseModal').modal('show');
+    	$('.ui.dropdown')
+    	  .dropdown()
+    	;
     };
 });
