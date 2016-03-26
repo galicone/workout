@@ -73,8 +73,8 @@ public class UserController extends BaseController {
 	}
 	
 	@RequestMapping(value = "/exerciseType", method = RequestMethod.POST)
-	public void createExerciseType(@RequestBody ExerciseTypeDto exerciseTypeDto, @PathVariable Long userId) {
-		exerciseTypeService.createExerciseType(exerciseTypeDto, userId);
+	public void createExerciseType(@RequestBody ExerciseTypeDto exerciseType) {
+		exerciseTypeService.createExerciseType(exerciseType, getUserId());
 	}
 	
 	@RequestMapping(value = "/exerciseType", method = RequestMethod.DELETE)

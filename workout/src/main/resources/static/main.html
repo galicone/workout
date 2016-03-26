@@ -88,13 +88,33 @@
 				<div class="item" data-value="0">Female</div>
 			</div>
 		</div>
-		<p></p>
+		<div ng-click="addExerciseType()" class="ui small labeled icon button green" id="addExerciseType">
+				<i class="plus icon"></i>Exercise type
+			</div>
 	</div>
 	<div class="actions">
 		<div class="ui red deny button">Cancel</div>
 		<div class="ui positive button">Add</div>
 	</div>
 </div>
+
+<div id="addExerciseTypeModal" class="ui small modal">
+	<div class="header">Add new exercise type</div>
+	<div class="content">
+		<div class="ui labeled input">
+			<a class="ui label"> Name </a> <input type="text" name="ExerciseTypeName" id="ExerciseTypeName" ng-model="exerciseType.name">
+		</div>
+		</br></br>
+		<div class="ui labeled input">
+			<a class="ui label"> Description </a> <input type="text" name="ExerciseTypeDescription" id="ExerciseTypeDescription" ng-model="exerciseType.description">
+		</div>
+	</div>
+	<div class="actions">
+		<div class="ui red deny button">Cancel</div>
+		<div ng-click="addExerciseTypeSubmit(exerciseType)" class="ui positive button">Add</div>
+	</div>
+</div>
+
 
 <script type="text/javascript">
 	$(function() {

@@ -108,6 +108,17 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
           console.log('ALLOW');
         }
   });
+    
+ // Load modal
+    $scope.$on('$viewContentLoaded', function(){
+		$('#addExerciseModal').modal({
+			blurring : true
+		});
+		
+		$('#addExerciseTypeModal').modal({
+			blurring : true
+		});
+    });
 	
 	getTraining();
 	
@@ -155,17 +166,21 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
 		});
     };
     
-    // Load modal
-    $scope.$on('$viewContentLoaded', function(){
-		$('#addExerciseModal').modal({
-			blurring : true
-		});
-      });
-    
     $scope.addExercise = function() {
     	$('#addExerciseModal').modal('show');
     	$('.ui.dropdown')
-    	  .dropdown()
-    	;
+    	  .dropdown();
+    };
+    
+    $scope.addExerciseType = function() {
+    	$('#addExerciseTypeModal').modal('show');
+    };
+    
+    $scope.addExerciseTypeSubmit = function(exerciseType) {
+        $http.post('/exerciseType', exerciseType).success(function(data) {
+                    console.log("succeeded")
+        }).error(function() {
+            console.log("failed")
+        });
     };
 });
