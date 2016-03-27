@@ -53,8 +53,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.antMatchers("/index.html", "/home.html", "/register", "/", "/login", "/login.html", "/register.html", "/user/login", "/user/register").permitAll()
 			.anyRequest().authenticated().and().httpBasic().and().csrf()
-			.csrfTokenRepository(csrfTokenRepository()).and()
+			.csrfTokenRepository(csrfTokenRepository()).and().exceptionHandling().accessDeniedPage("/login.html").and()
 			.addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
+			
 	}
 
 	private Filter csrfHeaderFilter() {

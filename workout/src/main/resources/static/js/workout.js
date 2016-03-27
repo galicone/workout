@@ -24,16 +24,6 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
     $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 }).controller('navigationCtrl', function($rootScope, $scope, $http, $location, $route) {
-	$rootScope.$on('$routeChangeStart', function (event) {
-        if (!$rootScope.authenticated) {
-          console.log('DENY : Redirecting to Login');
-          $location.path('/');
-        }
-        else {
-          console.log('ALLOW');
-        }
-  });
-	
     $scope.tab = function(route) {
         return $route.current && route === $route.current.controller;
     };
@@ -109,15 +99,6 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
     };
 
 }).controller('trainingCtrl', function($rootScope, $scope, $http, $location) {
-    $rootScope.$on('$routeChangeStart', function (event) {
-        if (!$rootScope.authenticated) {
-          console.log('DENY : Redirecting to Login');
-          $location.path('/');
-        }
-        else {
-          console.log('ALLOW');
-        }
-  });
     
  // Load modal
     $scope.$on('$viewContentLoaded', function(){
