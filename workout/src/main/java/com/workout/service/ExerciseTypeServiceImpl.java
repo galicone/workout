@@ -1,5 +1,6 @@
 package com.workout.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -7,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.workout.converter.ExerciseTypeConverter;
 import com.workout.domain.ExerciseType;
 import com.workout.dto.ExerciseTypeDto;
 import com.workout.repository.ExerciseTypeRepository;
@@ -14,14 +16,13 @@ import com.workout.repository.ExerciseTypeRepository;
 @Service
 public class ExerciseTypeServiceImpl implements ExerciseTypeService {
 
-	private final ExerciseTypeRepository exerciseTypeRepository;
-	
 	@Autowired
-	public ExerciseTypeServiceImpl(ExerciseTypeRepository exerciseTypeRepository) {
-		this.exerciseTypeRepository = exerciseTypeRepository;
-	}
+	private ExerciseTypeConverter exerciseTypeConverter;
+	@Autowired
+	private ExerciseTypeRepository exerciseTypeRepository;
 
 	@Override
+	@Transactional
 	public ExerciseType createExerciseType(ExerciseTypeDto exerciseTypeDto, Long userId) {
 		ExerciseType exerciseType = new ExerciseType(exerciseTypeDto.getName(), exerciseTypeDto.getDescription());
 		exerciseType.setUserId(userId);
@@ -36,7 +37,14 @@ public class ExerciseTypeServiceImpl implements ExerciseTypeService {
 	}
 
 	@Override
-	public List<ExerciseType> getExerciseTypeForUser(Long userId) {
-		return exerciseTypeRepository.findByUserId(userId);
+	public List<ExerciseTypeDto> getExerciseTypeForUser(Long userId) {
+		List<ExerciseTypeDto> exerciseTypeDtos = new ArrayList<ExerciseTypeDto>();
+		List<ExerciseType> exerciseTypes = exerciseTypeRepository.findByUserId(userId);
+		
+		for (ExerciseType exerciseType : exerciseTypes) {
+			exerciseTypeDtos.add(exerciseTypeConverter.convertToDto(exerciseType));
+		}
+		
+		return exerciseTypeDtos;
 	}
 }

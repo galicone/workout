@@ -24,6 +24,16 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
     $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 }).controller('navigationCtrl', function($rootScope, $scope, $http, $location, $route) {
+	$rootScope.$on('$routeChangeStart', function (event) {
+        if (!$rootScope.authenticated) {
+          console.log('DENY : Redirecting to Login');
+          $location.path('/');
+        }
+        else {
+          console.log('ALLOW');
+        }
+  });
+	
     $scope.tab = function(route) {
         return $route.current && route === $route.current.controller;
     };
@@ -121,10 +131,18 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
     });
 	
 	getTraining();
+	getExerciseTypes();
 	
 	function getTraining() {
 		$http.get('/training').success(function(data) {
 	        $scope.trainings = data;
+	    }).error(function(error, status) {
+	    });
+	}
+	
+	function getExerciseTypes() {
+		$http.get('/exerciseType').success(function(data) {
+	        $scope.exerciseTypes = data;
 	    }).error(function(error, status) {
 	    });
 	}
@@ -167,12 +185,15 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
     };
     
     $scope.addExercise = function() {
+    	getExerciseTypes();
+    	
     	$('#addExerciseModal').modal('show');
     	$('.ui.dropdown')
     	  .dropdown();
     };
     
     $scope.addExerciseType = function() {
+    	$('#addExerciseModal').modal('close');
     	$('#addExerciseTypeModal').modal('show');
     };
     

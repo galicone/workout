@@ -1,120 +1,116 @@
-<div id="navigationMenu">
-	<ul>
-		<li><a href="" ng-click="logout()"><img src="../images/logout.png" title="Logout"></a></li>
-		<li><a href='#'><img src="../images/contact.png" title="Contact"></a></li>
-		<li><a href='#'><img src="../images/account.png" title="Account"></a></li>
-		<li class='active'><a href='#'><img src="../images/home.png" title="Home page"></a></li>
-	</ul>
-</div>
+<div ng-controller="trainingCtrl">
+	<div id="navigationMenu">
+		<ul>
+			<li><a href="" ng-click="logout()"><img src="../images/logout.png" title="Logout"></a></li>
+			<li><a href='#'><img src="../images/contact.png" title="Contact"></a></li>
+			<li><a href='#'><img src="../images/account.png" title="Account"></a></li>
+			<li class='active'><a href='#'><img src="../images/home.png" title="Home page"></a></li>
+		</ul>
+	</div>
 
-<div id="content">
-	<div id="sidebar">
-		<div class="nav-container">
-			<ul class="nav">
-				<li class="active"><a href="#"><img src="../images/training.png"> <span class="text">Trainings</span>
-				</a></li>
-				<li><a href="#"><img src="../images/statistics.png"> <span class="text">Statistics</span> </a></li>
-			</ul>
+	<div id="content">
+		<div id="sidebar">
+			<div class="nav-container">
+				<ul class="nav">
+					<li class="active"><a href="#"><img src="../images/training.png"> <span class="text">Trainings</span>
+					</a></li>
+					<li><a href="#"><img src="../images/statistics.png"> <span class="text">Statistics</span> </a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="mainDiv">
+			<div id="datetimePickerContainer">
+				<label>Choose Date</label>
+				<div class='input-group date' id='datetimePicker'>
+					<input type='text' class="form-control" /> <span class="input-group-addon"> <span
+						class="glyphicon glyphicon-calendar"></span>
+					</span>
+
+				</div>
+				</br>
+
+				<div ng-click="addTraining()" class="ui small labeled icon button green" id="addExercise">
+					<i class="plus icon"></i>Training
+				</div>
+			</div>
+
+			<table id="trainingTable" ng-show="authenticated" ng-repeat="training in trainings"
+				class="ui celled selectable right aligned table">
+				<thead>
+					<tr>
+						<th>Exercise</th>
+						<th>Repeats</th>
+						<th>Duration (minutes)</th>
+						<th><button type="button" class="btn btn-danger btn-sm" ng-click="removeTraining(training.id)">Remove
+								training</button></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="exercise in training.exercises">
+						<td>{{exercise.repeats}}</td>
+						<td>{{exercise.exerciseType.name}}</td>
+						<td>{{exercise.duration}}</td>
+						<td><button type="button" class="btn btn-warning btn-xs">Edit</button>
+							<button type="button" class="btn btn-danger btn-xs" ng-click="removeExercise(exercise.id)">Remove</button></td>
+					</tr>
+				</tbody>
+				<tfoot class="full-width">
+					<tr>
+						<th></th>
+						<th colspan="4">
+							<div ng-click="addExercise()" class="ui right floated small primary labeled icon button addExercise">
+								<i class="plus icon"></i>Exercise
+							</div>
+						</th>
+					</tr>
+				</tfoot>
+			</table>
 		</div>
 	</div>
-	<div id="mainDiv" ng-controller="trainingCtrl">
-		<div id="datetimePickerContainer">
-			<label>Choose Date</label>
-			<div class='input-group date' id='datetimePicker'>
-				<input type='text' class="form-control" /> <span class="input-group-addon"> <span
-					class="glyphicon glyphicon-calendar"></span>
-				</span>
 
+	<div id="addExerciseModal" class="ui small modal">
+		<div class="header">Add new exercise</div>
+		<div class="content">
+			<div class="ui labeled input">
+				<a class="ui label"> Repeats </a> <input type="text" name="repeats" id="repeats" ng-model="exercise.repeats">
 			</div>
-			</br>
-
-			<div ng-click="addTraining()" class="ui small labeled icon button green" id="addExercise">
-				<i class="plus icon"></i>Training
+			</br> </br>
+			<div class="ui labeled input right floated">
+				<a class="ui label"> Duration </a> <input type="text" name="duration" id="duration" ng-model="exercise.duration">
 			</div>
-		</div>
-
-		<table id="trainingTable" ng-show="authenticated" ng-repeat="training in trainings"
-			class="ui celled selectable right aligned table">
-			<thead>
-				<tr>
-					<th>Exercise</th>
-					<th>Repeats</th>
-					<th>Duration (minutes)</th>
-					<th><button type="button" class="btn btn-danger btn-sm" ng-click="removeTraining(training.id)">Remove
-							training</button></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="exercise in training.exercises">
-					<td>{{exercise.repeats}}</td>
-					<td>{{exercise.exerciseType.name}}</td>
-					<td>{{exercise.duration}}</td>
-					<td><button type="button" class="btn btn-warning btn-xs">Edit</button>
-						<button type="button" class="btn btn-danger btn-xs" ng-click="removeExercise(exercise.id)">Remove</button></td>
-				</tr>
-			</tbody>
-			<tfoot class="full-width">
-				<tr>
-					<th></th>
-					<th colspan="4">
-						<div ng-click="addExercise()" class="ui right floated small primary labeled icon button addExercise">
-							<i class="plus icon"></i>Exercise
-						</div>
-					</th>
-				</tr>
-			</tfoot>
-		</table>
-	</div>
-</div>
-
-<div id="addExerciseModal" class="ui small modal">
-	<div class="header">Add new exercise</div>
-	<div class="content">
-		<div class="ui labeled input">
-			<a class="ui label"> Repeats </a> <input type="text" name="repeats" id="repeats" ng-model="exercise.repeats">
-		</div>
-		</br>
-		</br>
-		<div class="ui labeled input right floated">
-			<a class="ui label"> Duration </a> <input type="text" name="duration" id="duration" ng-model="exercise.duration">
-		</div>
-		</br>
-		</br>
-		<div class="ui selection dropdown">
-			<input type="hidden" name="gender"> <i class="dropdown icon"></i>
-			<div class="default text">Exercise type</div>
-			<div class="menu">
-				<div class="item" data-value="1">Male</div>
-				<div class="item" data-value="0">Female</div>
-			</div>
-		</div>
-		<div ng-click="addExerciseType()" class="ui small labeled icon button green" id="addExerciseType">
+			</br> </br> <select class="ui dropdown">
+				<option value="">Gender</option>
+				<option ng-repeat="exerciseType in exerciseTypes">{{exerciseType.name}}</option>
+			</select> </br> </br>
+			<div ng-click="addExerciseType()" class="ui small labeled icon button green" id="addExerciseType">
 				<i class="plus icon"></i>Exercise type
 			</div>
-	</div>
-	<div class="actions">
-		<div class="ui red deny button">Cancel</div>
-		<div class="ui positive button">Add</div>
-	</div>
-</div>
-
-<div id="addExerciseTypeModal" class="ui small modal">
-	<div class="header">Add new exercise type</div>
-	<div class="content">
-		<div class="ui labeled input">
-			<a class="ui label"> Name </a> <input type="text" name="ExerciseTypeName" id="ExerciseTypeName" ng-model="exerciseType.name">
 		</div>
-		</br></br>
-		<div class="ui labeled input">
-			<a class="ui label"> Description </a> <input type="text" name="ExerciseTypeDescription" id="ExerciseTypeDescription" ng-model="exerciseType.description">
+		<div class="actions">
+			<div class="ui red deny button">Cancel</div>
+			<div class="ui positive button">Add</div>
 		</div>
 	</div>
-	<div class="actions">
-		<div class="ui red deny button">Cancel</div>
-		<div ng-click="addExerciseTypeSubmit(exerciseType)" class="ui positive button">Add</div>
+
+	<div id="addExerciseTypeModal" class="ui small modal">
+		<div class="header">Add new exercise type</div>
+		<div class="content">
+			<div class="ui labeled input">
+				<a class="ui label"> Name </a> <input type="text" name="ExerciseTypeName" id="ExerciseTypeName"
+					ng-model="exerciseType.name">
+			</div>
+			</br> </br>
+			<div class="ui labeled input">
+				<a class="ui label"> Description </a> <input type="text" name="ExerciseTypeDescription" id="ExerciseTypeDescription"
+					ng-model="exerciseType.description">
+			</div>
+		</div>
+		<div class="actions">
+			<div class="ui red deny button">Cancel</div>
+			<div ng-click="addExerciseTypeSubmit(exerciseType)" class="ui positive button">Add</div>
+		</div>
 	</div>
 </div>
-
 
 <script type="text/javascript">
 	$(function() {

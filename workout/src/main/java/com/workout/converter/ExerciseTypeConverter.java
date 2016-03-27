@@ -11,6 +11,7 @@ public class ExerciseTypeConverter {
 	public ExerciseTypeDto convertToDto(ExerciseType exerciseType) {
 		ExerciseTypeDto exerciseTypeDtO = new ExerciseTypeDto();
 		
+		exerciseTypeDtO.setId(exerciseType.getId());
 		exerciseTypeDtO.setName(exerciseType.getName());
 		exerciseTypeDtO.setDescription(exerciseType.getDescription());
 		

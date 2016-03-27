@@ -11,5 +11,5 @@ public interface ExerciseTypeService {
 	
 	public void deleteExerciseType(ExerciseTypeDto exerciseTypeDto, Long userId);
 	
-	public List<ExerciseType> getExerciseTypeForUser(Long userId);
+	public List<ExerciseTypeDto> getExerciseTypeForUser(Long userId);
 }
