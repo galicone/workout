@@ -1,10 +1,10 @@
 package com.workout.service;
 
 import com.workout.domain.Exercise;
-import com.workout.dto.ExerciseDto;
+import com.workout.dto.ExerciseReceiveDto;
 
 public interface ExerciseService {
 	
-	public Exercise createExercise(ExerciseDto exerciseDto, Long trainingId);
+	public Exercise createExercise(ExerciseReceiveDto exerciseDto, Long trainingId);
 	public void removeExercise(Long exerciseId);
 }

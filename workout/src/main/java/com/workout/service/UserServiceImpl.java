@@ -8,8 +8,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.workout.domain.User;
-import com.workout.dto.CredentialsDTO;
-import com.workout.dto.CredentialsDTO.UserDTO;
+import com.workout.dto.CredentialsDto;
+import com.workout.dto.CredentialsDto.UserDTO;
 import com.workout.exception.ApplicationException;
 import com.workout.repository.UserRepository;
 
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public User registerUser(CredentialsDTO credentials) throws ApplicationException {
+	public User registerUser(CredentialsDto credentials) throws ApplicationException {
 		UserDTO userDTO = credentials.getUserDTO();
 
 		validateUser(userDTO);

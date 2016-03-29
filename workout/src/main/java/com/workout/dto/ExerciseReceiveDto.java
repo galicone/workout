@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 @JsonRootName(value = "exercise")
-public class ExerciseDto {
+public class ExerciseReceiveDto {
 
 	@JsonProperty
 	private Long id;
@@ -13,16 +13,16 @@ public class ExerciseDto {
 	@JsonProperty
 	private Integer duration;
 	@JsonProperty
-	private ExerciseTypeDto exerciseType;
+	private Long exerciseTypeId;
 	
-	public ExerciseDto() {
+	public ExerciseReceiveDto() {
 	}
 	
-	public ExerciseDto(Integer repeats, Integer duration, ExerciseTypeDto exerciseType) {
+	public ExerciseReceiveDto(Integer repeats, Integer duration, Long exerciseTypeId) {
 		super();
 		this.repeats = repeats;
 		this.duration = duration;
-		this.exerciseType = exerciseType;
+		this.exerciseTypeId = exerciseTypeId;
 	}
 	
 	public Integer getRepeats() {
@@ -38,12 +38,12 @@ public class ExerciseDto {
 		this.duration = duration;
 	}
 
-	public ExerciseTypeDto getExerciseType() {
-		return exerciseType;
+	public Long getExerciseTypeId() {
+		return exerciseTypeId;
 	}
 
-	public void setExerciseType(ExerciseTypeDto exerciseType) {
-		this.exerciseType = exerciseType;
+	public void setExerciseTypeId(Long exerciseTypeId) {
+		this.exerciseTypeId = exerciseTypeId;
 	}
 
 	public Long getId() {

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.workout.domain.Exercise;
 import com.workout.domain.Training;
-import com.workout.dto.ExerciseDto;
+import com.workout.dto.ExerciseSendDto;
 import com.workout.dto.TrainingDto;
 
 @Component
@@ -19,7 +19,7 @@ public class TrainingConverter {
 	
 	public TrainingDto convertToDto(Training training) {
 		TrainingDto trainingDto = new TrainingDto();
-		List<ExerciseDto> exerciseDtos = new ArrayList<ExerciseDto>();
+		List<ExerciseSendDto> exerciseDtos = new ArrayList<ExerciseSendDto>();
 
 		if (training.getExercises() != null && !training.getExercises().isEmpty()) {
 			for (Exercise exercise : training.getExercises()) {

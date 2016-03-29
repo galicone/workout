@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.workout.dto.ExerciseDto;
+import com.workout.dto.ExerciseReceiveDto;
 import com.workout.service.ExerciseService;
 
 @RestController
@@ -17,7 +17,7 @@ public class ExerciseController extends BaseController {
 	private ExerciseService exerciseService;
 	
 	@RequestMapping(value = "/training/{trainingId}/exercise", method = RequestMethod.POST)
-	public void createExercise(@RequestBody ExerciseDto exerciseDto, @PathVariable Long trainingId) {
+	public void createExercise(@RequestBody ExerciseReceiveDto exerciseDto, @PathVariable Long trainingId) {
 		// TODO  Mozda staviti proveru da je taj trening zakacen za tog usera ?!
 		
 		exerciseService.createExercise(exerciseDto, trainingId);

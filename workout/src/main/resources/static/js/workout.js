@@ -111,10 +111,10 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
 		});
     });
 	
-	getTraining();
+	getTrainings();
 	getExerciseTypes();
 	
-	function getTraining() {
+	function getTrainings() {
 		$http.get('/training').success(function(data) {
 	        $scope.trainings = data;
 	    }).error(function(error, status) {
@@ -142,7 +142,7 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
 	
 	$scope.addTraining = function() {
 		$http.post('/training', {}).success(function(data) {
-			getTraining();
+			getTrainings();
 		}).error(function(data) {
 			$location.path("/login");
 		});
@@ -151,7 +151,7 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
 
 	$scope.removeTraining = function(trainingId) {
 		$http.delete('/training/' + trainingId, {}).success(function(data) {
-			getTraining();
+			getTrainings();
 		}).error(function(data) {
 			$location.path("/login");
 		});
@@ -159,18 +159,18 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
     
     $scope.removeExercise = function(exerciseId) {
 		$http.delete('/exercise/' + exerciseId, {}).success(function(data) {
-			getTraining();
+			getTrainings();
 		}).error(function(data) {
 			$location.path("/login");
 		});
     };
     
-    $scope.addExercise = function() {
+    $scope.addExercise = function(trainingId) {
     	getExerciseTypes();
     	
     	$('#addExerciseModal').modal('show');
-    	$('.ui.dropdown')
-    	  .dropdown();
+    	$('.ui.dropdown').dropdown('restore defaults');
+    	$scope.currentTrainingId = trainingId;
     };
     
     $scope.addExerciseType = function() {
@@ -181,6 +181,15 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
     $scope.addExerciseTypeSubmit = function(exerciseType) {
         $http.post('/exerciseType', exerciseType).success(function(data) {
                     console.log("succeeded")
+        }).error(function() {
+            console.log("failed")
+        });
+    };
+    
+    $scope.addExerciseSubmit = function(exercise) {
+    	exercise.exerciseTypeId = $('.item.exerciseTypeInput.ng-binding.ng-scope.active.selected').attr('id');
+        $http.post('/training/' + $scope.currentTrainingId +  '/exercise', exercise).success(function(data) {
+        	getTrainings();
         }).error(function() {
             console.log("failed")
         });

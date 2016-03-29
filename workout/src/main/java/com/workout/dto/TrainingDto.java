@@ -15,7 +15,7 @@ public class TrainingDto {
 	
 	private Long id;
 	
-	private List<ExerciseDto> exercises;
+	private List<ExerciseSendDto> exercises;
 
 	public DateTime getDateCreated() {
 		return dateCreated;
@@ -25,11 +25,11 @@ public class TrainingDto {
 		this.dateCreated = dateCreated;
 	}
 
-	public List<ExerciseDto> getExercises() {
+	public List<ExerciseSendDto> getExercises() {
 		return exercises;
 	}
 
-	public void setExercises(List<ExerciseDto> exercises) {
+	public void setExercises(List<ExerciseSendDto> exercises) {
 		this.exercises = exercises;
 	}
 

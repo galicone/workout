@@ -4,16 +4,16 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
-public class CredentialsDTO {
+public class CredentialsDto {
 	
 	private UserDTO userDTO;
 	
-	public CredentialsDTO(UserDTO userDTO) {
+	public CredentialsDto(UserDTO userDTO) {
 		super();
 		this.userDTO = userDTO;
 	}
 
-	public CredentialsDTO() {
+	public CredentialsDto() {
 	}
 	
 	public UserDTO getUserDTO() {

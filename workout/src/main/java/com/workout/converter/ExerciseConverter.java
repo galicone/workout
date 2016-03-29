@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.workout.domain.Exercise;
-import com.workout.dto.ExerciseDto;
+import com.workout.dto.ExerciseSendDto;
 
 @Component
 public class ExerciseConverter {
@@ -12,8 +12,8 @@ public class ExerciseConverter {
 	@Autowired
 	private ExerciseTypeConverter exerciseTypeConverter;
 	
-	public ExerciseDto convertToDto(Exercise exercise) {
-		ExerciseDto exerciseDto = new ExerciseDto();
+	public ExerciseSendDto convertToDto(Exercise exercise) {
+		ExerciseSendDto exerciseDto = new ExerciseSendDto();
 		
 		exerciseDto.setId(exercise.getId());
 		exerciseDto.setRepeats(exercise.getRepeats());

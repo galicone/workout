@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.workout.domain.User;
-import com.workout.dto.CredentialsDTO;
+import com.workout.dto.CredentialsDto;
 import com.workout.exception.ApplicationException;
 import com.workout.service.ExerciseService;
 import com.workout.service.UserService;
@@ -29,7 +29,7 @@ public class UserController extends BaseController {
 	private ExerciseService exerciseService;
 
 	@RequestMapping(value = "/user/register", method = RequestMethod.POST)
-	public User registerUser(@RequestBody CredentialsDTO credentials) {
+	public User registerUser(@RequestBody CredentialsDto credentials) {
 		try {
 			return userService.registerUser(credentials);
 		} catch (ApplicationException e) {

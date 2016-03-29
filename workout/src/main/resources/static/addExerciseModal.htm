@@ -1,0 +1,30 @@
+<div id="addExerciseModal" class="ui small modal">
+	<div class="header">Add new exercise</div>
+	<div class="content">
+		<div class="ui labeled input">
+			<a class="ui label"> Repeats </a> <input type="text" name="repeats" id="repeats" ng-model="exercise.repeats">
+		</div>
+		</br> </br>
+		<div class="ui labeled input right floated">
+			<a class="ui label"> Duration </a> <input type="text" name="duration" id="duration" ng-model="exercise.duration">
+		</div>
+		</br> </br>
+		<div class="ui large label">Large</div>
+		<div id="exerciseTypeInput" class="ui selection dropdown">
+			<input type="hidden" value="default"> <i class="dropdown icon"></i>
+			<div class="default text">sdgs</div>
+			<div class="menu">
+				<div class="item exerciseTypeInput" data-value="{{exerciseType.name}}" ng-repeat="exerciseType in exerciseTypes"
+					id="{{exerciseType.id}}">{{exerciseType.name}}</div>
+			</div>
+		</div>
+		</br> </br>
+		<div ng-click="addExerciseType()" class="ui small labeled icon button green" id="addExerciseType">
+			<i class="plus icon"></i>Exercise type
+		</div>
+	</div>
+	<div class="actions">
+		<div class="ui red deny button">Cancel</div>
+		<div ng-click="addExerciseSubmit(exercise)" class="ui positive button">Add</div>
+	</div>
+</div>
