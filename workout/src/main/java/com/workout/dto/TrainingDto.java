@@ -1,8 +1,7 @@
 package com.workout.dto;
 
+import java.time.LocalDate;
 import java.util.List;
-
-import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
@@ -11,17 +10,17 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 public class TrainingDto {
 
 	@JsonProperty
-	private DateTime dateCreated;
+	private LocalDate dateCreated;
 	
 	private Long id;
 	
 	private List<ExerciseSendDto> exercises;
 
-	public DateTime getDateCreated() {
+	public LocalDate getDateCreated() {
 		return dateCreated;
 	}
 
-	public void setDateCreated(DateTime dateCreated) {
+	public void setDateCreated(LocalDate dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 

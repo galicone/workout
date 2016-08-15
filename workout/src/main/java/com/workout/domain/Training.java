@@ -1,5 +1,6 @@
 package com.workout.domain;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,9 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
-
 @Entity(name = "TRAINING")
 public class Training {
 
@@ -22,8 +20,7 @@ public class Training {
 	private Long id;
 	
 	@Column(name = "DATE_CREATED")
-	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-	private DateTime dateCreated;
+	private LocalDate dateCreated;
 	
 	@Column(name = "USER_ID")
 	private Long userId;
@@ -36,7 +33,7 @@ public class Training {
 	
 	public Training(Long userId) {
 		this.userId = userId;
-		this.dateCreated = DateTime.now();
+		this.dateCreated = LocalDate.now();
 	}
 	
 	public Long getId() {
@@ -47,11 +44,11 @@ public class Training {
 		this.id = id;
 	}
 
-	public DateTime getDateCreated() {
+	public LocalDate getDateCreated() {
 		return dateCreated;
 	}
 
-	public void setDateCreated(DateTime dateCreated) {
+	public void setDateCreated(LocalDate dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
