@@ -1,5 +1,6 @@
 package com.workout.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
@@ -10,5 +11,5 @@ import com.workout.domain.Training;
 @Repository
 public interface TrainingRepository extends CrudRepository<Training, Long> {
 
-	List<Training> findByUserId(Long userId);
+	List<Training> findByUserIdAndDateCreated(Long userId, LocalDate dateCreated);
 }

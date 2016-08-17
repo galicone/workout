@@ -7,6 +7,6 @@ import com.workout.domain.Training;
 public interface TrainingService {
 
 	Training createTraining(Long userId);
-	List<Training> getTrainings(Long userId);
+	List<Training> getTrainings(Long userId, String selectedDate);
 	void removeTraining(Long trainingId);
 }

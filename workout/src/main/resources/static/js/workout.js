@@ -100,6 +100,12 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
 
 }).controller('trainingCtrl', function($rootScope, $scope, $http, $location) {
     
+	// initialize date picker
+	$('#datetimePicker').datepicker({
+	    format: 'dd-mm-yyyy',
+	});
+	$('#datetimePicker').datepicker("setDate", new Date());
+	
  // Load modal
     $scope.$on('$viewContentLoaded', function(){
 		$('#addExerciseModal').modal({
@@ -115,7 +121,8 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
 	getExerciseTypes();
 	
 	function getTrainings() {
-		$http.get('/training').success(function(data) {
+		var selectedDate = $('#datetimePicker').datepicker('getFormattedDate');
+		$http.get('/training/' + selectedDate).success(function(data) {
 	        $scope.trainings = data;
 	    }).error(function(error, status) {
 	    });

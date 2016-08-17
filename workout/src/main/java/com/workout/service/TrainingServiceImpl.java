@@ -1,5 +1,7 @@
 package com.workout.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import com.workout.repository.TrainingRepository;
 @Service
 public class TrainingServiceImpl implements TrainingService {
 
+	private static final String DATE_FORMATE = "dd-MM-yyyy";
+	
 	@Autowired
 	private TrainingRepository trainingRepository;
 	
@@ -21,8 +25,11 @@ public class TrainingServiceImpl implements TrainingService {
 	}
 
 	@Override
-	public List<Training> getTrainings(Long userId) {
-		return trainingRepository.findByUserId(userId);
+	public List<Training> getTrainings(Long userId, String selectedDate) {
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(DATE_FORMATE);
+		LocalDate date = LocalDate.parse(selectedDate, dateTimeFormatter);
+		
+		return trainingRepository.findByUserIdAndDateCreated(userId, date);
 	}
 
 	@Override

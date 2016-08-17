@@ -22,10 +22,10 @@ public class TrainingController extends BaseController {
 	@Autowired
 	private TrainingConverter trainingConverter;
 
-	@RequestMapping(value = "/training", method = RequestMethod.GET)
-	public List<TrainingDto> getTrainings() {
+	@RequestMapping(value = "/training/{selectedDate}", method = RequestMethod.GET)
+	public List<TrainingDto> getTrainings(@PathVariable String selectedDate) {
 		List<TrainingDto> trainingDtos = new ArrayList<TrainingDto>();
-		List<Training> trainings = trainingService.getTrainings(getUserId());
+		List<Training> trainings = trainingService.getTrainings(getUserId(), selectedDate);
 		
 		for (Training training : trainings) {
 			trainingDtos.add(trainingConverter.convertToDto(training));
