@@ -100,13 +100,20 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
 
 }).controller('trainingCtrl', function($rootScope, $scope, $http, $location) {
     
-	// initialize date picker
+	// Initialize date picker
 	$('#datetimePicker').datepicker({
 	    format: 'dd-mm-yyyy',
 	});
 	$('#datetimePicker').datepicker("setDate", new Date());
 	
- // Load modal
+	// Change date event listener
+	$('#datetimePicker').datepicker()
+    	.on('changeDate', function() {
+    	getTrainings();
+    	$('#datetimePicker').datepicker('hide');
+    });
+	
+    // Load modal
     $scope.$on('$viewContentLoaded', function(){
 		$('#addExerciseModal').modal({
 			blurring : true
@@ -148,7 +155,8 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
 	}
 	
 	$scope.addTraining = function() {
-		$http.post('/training', {}).success(function(data) {
+		var dateCreated = $('#datetimePicker').datepicker('getFormattedDate');
+		$http.post('/training/' + dateCreated, {}).success(function(data) {
 			getTrainings();
 		}).error(function(data) {
 			$location.path("/login");

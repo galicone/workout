@@ -1,7 +1,6 @@
 package com.workout.service;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,25 +8,27 @@ import org.springframework.stereotype.Service;
 
 import com.workout.domain.Training;
 import com.workout.repository.TrainingRepository;
+import com.workout.util.DateUtils;
 
 @Service
 public class TrainingServiceImpl implements TrainingService {
 
-	private static final String DATE_FORMATE = "dd-MM-yyyy";
+	
 	
 	@Autowired
 	private TrainingRepository trainingRepository;
 	
 	@Override
-	public Training createTraining(Long userId) {
-		Training training = new Training(userId);
+	public Training createTraining(Long userId, String dateCreated) {
+		LocalDate date = DateUtils.convertDateStringToDate(dateCreated);
+		
+		Training training = new Training(userId, date);
 		return trainingRepository.save(training);
 	}
 
 	@Override
 	public List<Training> getTrainings(Long userId, String selectedDate) {
-		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(DATE_FORMATE);
-		LocalDate date = LocalDate.parse(selectedDate, dateTimeFormatter);
+		LocalDate date = DateUtils.convertDateStringToDate(selectedDate);
 		
 		return trainingRepository.findByUserIdAndDateCreated(userId, date);
 	}

@@ -31,9 +31,9 @@ public class Training {
 	public Training() {
 	}
 	
-	public Training(Long userId) {
+	public Training(Long userId, LocalDate dateCreated) {
 		this.userId = userId;
-		this.dateCreated = LocalDate.now();
+		this.dateCreated = dateCreated;
 	}
 	
 	public Long getId() {

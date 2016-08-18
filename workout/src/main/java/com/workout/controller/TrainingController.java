@@ -33,9 +33,9 @@ public class TrainingController extends BaseController {
 		return trainingDtos;
 	}
 	
-	@RequestMapping(value = "/training", method = RequestMethod.POST)
-	public void createTraining() {
-		trainingService.createTraining(getUserId());
+	@RequestMapping(value = "/training/{selectedDate}", method = RequestMethod.POST)
+	public void createTraining(@PathVariable String selectedDate) {
+		trainingService.createTraining(getUserId(), selectedDate);
 	}
 	
 	@RequestMapping(value = "/training/{trainingId}", method = RequestMethod.DELETE)
