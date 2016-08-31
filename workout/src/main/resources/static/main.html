@@ -2,27 +2,29 @@
 <div ng-include="'navigationMenu.htm'"></div>
 
 <div id="content">
-	<div id="sidebar">
-		<div class="nav-container">
-			<ul class="nav">
-				<li class="active"><a href="#"><img src="../images/training.png"> <span class="text">Trainings</span>
-				</a></li>
-				<li><a href="#"><img src="../images/statistics.png"> <span class="text">Statistics</span> </a></li>
-			</ul>
-		</div>
-	</div>
+	<div id="sidebar" ng-include="'sidebar.htm'"></div>
+	
 	<div id="mainDiv">
 		<div id="datetimePickerContainer">
 			<label>Choose Date</label>
 			<div class='input-group date' id='datetimePicker'>
-				<input type='text' class="form-control" /> <span class="input-group-addon"> <span
+				<input type='text' class="form-control" /> <span
+					class="input-group-addon"> <span
 					class="glyphicon glyphicon-calendar"></span>
 				</span>
 
 			</div>
+
+			<script type="text/javascript">
+				$(function() {
+					$('#datetimePicker').datepicker();
+				});
+			</script>
+
 			</br>
 
-			<div ng-click="addTraining()" class="ui small labeled icon button green" id="addExercise">
+			<div ng-click="addTraining()"
+				class="ui small labeled icon button green" id="addExercise">
 				<i class="plus icon"></i>Training
 			</div>
 		</div>

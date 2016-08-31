@@ -19,6 +19,9 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
     }).when('/logout', {
         templateUrl: 'login.html',
         controller: 'navigationCtrl'
+    }).when('/statistics', {
+        templateUrl: 'statistics.html',
+        controller: 'trainingCtrl'
     }).otherwise('/');
 
     $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -29,6 +32,9 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
     };
 
     $scope.go = function(path) {
+    	
+    	alert("dadasd");
+    	
         $location.path(path);
     };
 
@@ -113,7 +119,7 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
     	$('#datetimePicker').datepicker('hide');
     });
 	
-    // Load modal
+	// Load modal
     $scope.$on('$viewContentLoaded', function(){
 		$('#addExerciseModal').modal({
 			blurring : true
@@ -209,4 +215,12 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
             console.log("failed")
         });
     };
+    
+    $scope.goToStatistics = function() {
+		$location.path("statistics");
+	};
+	
+	$scope.goToTrainings = function() {
+		$location.path("/main");
+	};
 });
