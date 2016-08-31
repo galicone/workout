@@ -32,9 +32,6 @@ angular.module('workout', ['ngRoute']).run(['$rootScope', '$location', function 
     };
 
     $scope.go = function(path) {
-    	
-    	alert("dadasd");
-    	
         $location.path(path);
     };
 
