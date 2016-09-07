@@ -4,9 +4,11 @@
  	<js>file:${project.basedir}/src/main/resources/static/js/bootstrap.min.js</js>
  	<js>file:${project.basedir}/src/main/resources/static/js/semantic.min.js</js>
  	<js>file:${project.basedir}/src/main/resources/static/js/bootstrap-datepicker.min.js</js>
+ 	<js>file:${project.basedir}/src/main/resources/static/js/chart.min.js</js>
  	<js>webjar:angularjs/1.4.7/angular.min.js</js>
     <js>webjar:angularjs/1.4.7/angular-route.min.js</js>
     <js>webjar:angularjs/1.4.7/angular-cookies.min.js</js>
+ 	<js>file:${project.basedir}/src/main/resources/static/js/chart-line.js</js>
  	<js>file:${project.basedir}/src/main/resources/static/js/workout.js</js>
  	<css>file:${project.basedir}/src/main/resources/static/css/menu-navigation.css</css>
  	<css>file:${project.basedir}/src/main/resources/static/css/sidebar.css</css>
@@ -14,5 +16,6 @@
  	<css>file:${project.basedir}/src/main/resources/static/css/semantic.min.css</css>
  	<css>file:${project.basedir}/src/main/resources/static/css/bootstrap-datepicker.min.css</css>
  	<css>file:${project.basedir}/src/main/resources/static/css/main.css</css>
+ 	<css>file:${project.basedir}/src/main/resources/static/css/chart-line.css</css>
    </group>
 </groups>
